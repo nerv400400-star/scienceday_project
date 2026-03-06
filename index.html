@@ -1,1 +1,589 @@
-dd
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>마약류 오남용 예방 자료</title>
+  <style>
+    :root {
+      --bg: #050505;
+      --panel: #101010;
+      --text: #f3f3f3;
+      --muted: #c9c9c9;
+      --line: rgba(255,255,255,0.12);
+      --green: #1faa4a;
+      --green-dark: #0d6d2e;
+      --blue: #1677ff;
+      --blue-dark: #0a4db0;
+      --white: #ffffff;
+      --black: #111111;
+      --shadow: 0 18px 50px rgba(0,0,0,0.35);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    a, button { font: inherit; }
+    img { display: block; max-width: 100%; }
+    .hidden { display: none !important; }
+
+    .app {
+      width: 100%;
+      min-height: 100vh;
+      background: #000;
+    }
+
+    .screen {
+      width: 100%;
+      min-height: 100vh;
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    /* HOME */
+    .home {
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      min-height: 100vh;
+      background: #000;
+    }
+
+    .sidebar {
+      background: linear-gradient(180deg, rgba(14,14,14,0.98), rgba(5,5,5,0.98));
+      border-right: 1px solid var(--line);
+      padding: 28px 20px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 20;
+    }
+
+    .sidebar-top h1 {
+      margin: 0 0 10px;
+      font-size: 1.4rem;
+      letter-spacing: -0.03em;
+    }
+
+    .sidebar-top p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.6;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .menu-btn {
+      width: 100%;
+      text-align: left;
+      color: #fff;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px;
+      padding: 18px 16px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .menu-btn:hover {
+      transform: translateX(4px);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .menu-btn strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .menu-btn span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    .sidebar-footer {
+      color: #a8a8a8;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .home-main {
+      position: relative;
+      min-height: 100vh;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .home-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.5)), url('tobacco_main.jpg');
+      background-size: cover;
+      background-position: center center;
+      filter: saturate(1.05) contrast(1.06);
+    }
+
+    .hero-overlay {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 70px 60px 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(90deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.2) 42%, rgba(0,0,0,0.35) 100%);
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      margin-top: 24px;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #f5f5f5;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+      backdrop-filter: blur(5px);
+    }
+
+    .hero-copy h2 {
+      margin: 0 0 18px;
+      font-size: clamp(2.7rem, 6vw, 5.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: #ececec;
+      max-width: 640px;
+    }
+
+    .hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+    }
+
+    .hero-bottom-left {
+      color: #cfcfcf;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .hero-bottom-right {
+      color: #ffffff;
+      text-align: right;
+      font-size: 0.96rem;
+      font-weight: 600;
+      background: rgba(0,0,0,0.35);
+      padding: 12px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* SUBPAGES */
+    .top-back {
+      position: fixed;
+      left: 18px;
+      top: 18px;
+      z-index: 100;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(0,0,0,0.65);
+      color: #fff;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+    }
+
+    .subpage {
+      background: #fff;
+      color: #111;
+    }
+
+    .scroll-hero {
+      position: sticky;
+      top: 0;
+      height: 56vh;
+      min-height: 360px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 84px 40px 30px 40px;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .scroll-hero .small-label {
+      position: absolute;
+      left: 40px;
+      top: 28px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      opacity: 0.98;
+    }
+
+    .scroll-hero .big-title {
+      position: relative;
+      z-index: 2;
+      margin: 54px 0 0;
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      max-width: 860px;
+      font-weight: 800;
+    }
+
+    .hero-green {
+      background: linear-gradient(180deg, var(--green) 0%, var(--green-dark) 100%);
+      color: #fff;
+    }
+
+    .hero-blue {
+      background: linear-gradient(180deg, var(--blue) 0%, var(--blue-dark) 100%);
+      color: #fff;
+    }
+
+    .hero-fill {
+      position: absolute;
+      inset: 0;
+      transform: translateY(0%);
+      will-change: transform;
+      z-index: 0;
+    }
+
+    .hero-green .hero-fill {
+      background: linear-gradient(180deg, #22be57 0%, #0e722f 100%);
+    }
+
+    .hero-blue .hero-fill {
+      background: linear-gradient(180deg, #2784ff 0%, #0a4db0 100%);
+    }
+
+    .content-shell {
+      position: relative;
+      z-index: 2;
+      background: #fff;
+      padding: 44px 0 90px;
+    }
+
+    .content-box {
+      width: min(980px, calc(100% - 40px));
+      margin: 0 auto;
+      background: #fff;
+      color: #111;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,0.08);
+      padding: 34px 28px;
+    }
+
+    .content-box p {
+      margin: 0 0 18px;
+      font-size: 1rem;
+      line-height: 1.95;
+      color: #151515;
+      word-break: keep-all;
+    }
+
+    /* IMPLEMENTATION */
+    .impl-page {
+      min-height: 100vh;
+      background: #04070d;
+      color: #fff;
+      padding: 80px 20px 40px;
+    }
+
+    .impl-wrap {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .impl-header {
+      margin-bottom: 18px;
+    }
+
+    .impl-small {
+      font-size: 0.95rem;
+      color: #cfd8ff;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .impl-title {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+    }
+
+    .stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #09111f;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow);
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(1);
+      transition: opacity 0.65s ease, transform 1.2s ease;
+      background: #07101d;
+    }
+
+    .slide.active {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #09111f;
+    }
+
+    .slide.zooming img {
+      animation: zoomIn 1s ease forwards;
+      transform-origin: center center;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(1); }
+      to { transform: scale(1.12); }
+    }
+
+    .pulse-dot {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #ff2d2d;
+      box-shadow: 0 0 0 0 rgba(255,45,45,0.7), 0 0 18px 8px rgba(255,45,45,0.55);
+      opacity: 0;
+      z-index: 3;
+      transform: translate(-50%, -50%);
+    }
+
+    .pulse-dot.animating {
+      animation: dotPulse 0.9s infinite;
+    }
+
+    @keyframes dotPulse {
+      0% { box-shadow: 0 0 0 0 rgba(255,45,45,0.6), 0 0 18px 8px rgba(255,45,45,0.5); }
+      70% { box-shadow: 0 0 0 18px rgba(255,45,45,0), 0 0 22px 10px rgba(255,45,45,0.36); }
+      100% { box-shadow: 0 0 0 0 rgba(255,45,45,0), 0 0 18px 8px rgba(255,45,45,0.5); }
+    }
+
+    .impl-caption {
+      margin-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      color: #d7def5;
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    .space-guide {
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      font-weight: 700;
+    }
+
+    @media (max-width: 980px) {
+      .home {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        position: relative;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+      .hero-overlay {
+        padding: 34px 24px 24px;
+      }
+      .hero-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero-bottom-right {
+        text-align: left;
+      }
+      .scroll-hero {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+      .scroll-hero .small-label {
+        left: 22px;
+      }
+      .content-box {
+        width: min(980px, calc(100% - 24px));
+        padding: 24px 18px;
+      }
+      .impl-caption {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-copy h2 {
+        font-size: 2.35rem;
+      }
+      .menu-btn strong {
+        font-size: 0.96rem;
+      }
+      .scroll-hero .big-title {
+        font-size: 2.2rem;
+      }
+      .top-back {
+        left: 12px;
+        top: 12px;
+        padding: 10px 13px;
+      }
+      .stage {
+        aspect-ratio: 3 / 4;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <section class="screen active" id="home-screen">
+      <div class="home">
+        <aside class="sidebar">
+          <div class="sidebar-top">
+            <h1>마약류 오남용 예방 자료</h1>
+            <p>사이드바 메뉴를 통해 문제 상황, 해결방안, 실제 예방 자료 구현 화면으로 이동할 수 있습니다.</p>
+            <div class="menu">
+              <button class="menu-btn" data-target="problem-screen">
+                <strong>설정한 문제 상황</strong>
+                <span>문제 정의, SDGs 3번과의 연계, 위험성 서술 영역</span>
+              </button>
+              <button class="menu-btn" data-target="solution-screen">
+                <strong>해결방안</strong>
+                <span>예방 전략, 교육 방향, 실천 방안 정리 영역</span>
+              </button>
+              <button class="menu-btn" data-target="implementation-screen">
+                <strong>실제 예방 자료 구현</strong>
+                <span>신체 전달 경로 및 신경계 영향 시각화 애니메이션</span>
+              </button>
+            </div>
+          </div>
+          <div class="sidebar-footer">
+            본 페이지는 GitHub Pages 환경에서 바로 실행될 수 있도록 단일 HTML 구조로 제작되었습니다.
+          </div>
+        </aside>
+
+        <main class="home-main">
+          <div class="home-hero">
+            <div class="hero-image"></div>
+            <div class="hero-overlay">
+              <div class="hero-copy">
+                <div class="hero-kicker">Prevention Campaign Web Page</div>
+                <h2>마약류 오남용의 위험성과<br>예방의 필요성</h2>
+                <p>
+                  시각적 충격과 정보 전달을 결합한 구조로, 문제 상황의 인식부터 해결방안 제시,
+                  실제 예방 자료 구현까지 단계적으로 확인할 수 있도록 구성한 페이지입니다.
+                </p>
+              </div>
+
+              <div class="hero-bottom">
+                <div class="hero-bottom-left">
+                  검은 배경 위 강한 대비를 활용해 주제의 위험성과 긴장감을 드러내고,<br>
+                  각 세부 페이지에서는 색상과 스크롤 애니메이션으로 정보의 성격을 분리해 표현합니다.
+                </div>
+                <div class="hero-bottom-right">권태선, 양서진, 오석준, 안세훈 제작</div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <section class="screen subpage" id="problem-screen">
+      <button class="top-back back-home">← 이전으로</button>
+      <div class="scroll-hero hero-green" data-fill="problem-fill">
+        <div class="hero-fill" id="problem-fill"></div>
+        <div class="small-label">설정한 문제 상황</div>
+        <h2 class="big-title">SDGs 3번 건강과 웰빙 증진</h2>
+      </div>
+      <div class="content-shell">
+        <div class="content-box">
+          <p>현대 사회에서 마약류 오남용은 단순한 개인의 일탈이나 일시적 선택으로 설명하기 어려운 복합적 사회 문제로 확대되고 있습니다. 접근 경로가 다양해지고 정보 전달 속도가 빨라지면서, 청소년과 청년층은 과거보다 훨씬 빠르고 직접적인 방식으로 유해 약물에 노출될 수 있는 환경에 놓여 있습니다. 특히 호기심, 또래 압력, 스트레스 해소 욕구, 온라인 공간에서의 왜곡된 정보, 약물에 대한 위험성 저평가가 결합될 경우 초기 진입 장벽은 예상보다 낮아질 수 있습니다. 문제는 이러한 시작이 일회성 체험으로 끝나지 않는다는 점입니다. 일부 약물은 짧은 시간 안에 뇌의 보상 체계에 영향을 주어 반복적 사용 가능성을 높이고, 사용자는 스스로 통제하고 있다고 생각하는 동안에도 이미 판단력 저하와 의존 형성의 경로에 진입할 수 있습니다.</p>
+          <p>이 문제를 건강과 웰빙의 관점에서 보면, 약물 오남용은 신체적 손상만이 아니라 정신 건강 악화, 관계 파괴, 학업 및 사회 기능 저하를 동시에 유발하는 전방위적 위협입니다. 약물이 체내에 들어오면 혈류를 따라 여러 기관으로 전달되고, 최종적으로는 뇌의 신경전달 체계에 직접적인 영향을 미칩니다. 이 과정에서 일시적인 각성, 진정, 환각, 기분 상승과 같은 효과가 나타날 수 있지만, 그 이면에서는 심혈관계 부담 증가, 호흡기 손상, 간과 신장의 대사 부담, 신경계 기능 이상이 누적됩니다. 청소년기의 경우 신경 발달이 완전히 마무리되지 않았기 때문에 충동 조절, 의사결정, 감정 조절에 관련된 기능이 더 쉽게 손상될 수 있다는 점에서도 위험이 큽니다. 따라서 약물 문제는 단순히 불법성의 문제가 아니라, 인간의 생명과 일상 기능을 지속적으로 약화시키는 건강 문제로 접근해야 합니다.</p>
+          <p>또한 사회적 관점에서도 마약류 오남용은 개인 차원에 머물지 않습니다. 약물 사용이 확산되면 가정 내 갈등, 학교 부적응, 범죄 연루, 치료비 증가, 사회적 낙인과 고립 문제가 연쇄적으로 발생할 수 있습니다. 처음에는 개인의 스트레스 해소나 현실 도피처럼 보일 수 있으나, 시간이 지나면 공동체 전체의 안전과 복지를 위협하는 구조적 문제로 발전합니다. 특히 잘못된 미디어 표현이나 인터넷상 과장된 경험담은 약물의 위험보다 자극성과 호기심만을 부각시키는 경우가 있어 예방 교육의 필요성을 더욱 크게 만듭니다. 약물의 폐해는 ‘나중에 생기는 결과’가 아니라, 사용 순간부터 신체와 정신, 인간관계와 미래 계획에 동시에 침투하는 현재형 위험이라는 점을 분명히 인식해야 합니다.</p>
+          <p>SDGs 3번은 모든 연령대의 건강한 삶을 보장하고 웰빙을 증진하는 것을 목표로 합니다. 이 목표와 마약류 오남용 예방은 직접적으로 연결됩니다. 건강한 삶은 단지 질병이 없는 상태가 아니라, 신체적 안정성과 정신적 균형, 사회적 기능이 유지되는 상태를 포함합니다. 약물 오남용은 이 세 요소를 동시에 무너뜨릴 수 있기 때문에, 예방 교육은 보건교육의 부가 요소가 아니라 핵심 과제로 다뤄져야 합니다. 학교와 지역사회는 단순한 경고 문구를 전달하는 수준을 넘어, 약물이 체내와 뇌에 어떤 변화를 일으키는지, 왜 반복 사용이 위험한지, 실제로 어떤 회복 어려움이 뒤따르는지를 구체적이고 시각적으로 설명할 필요가 있습니다. 정확한 정보 제공과 조기 인식은 예방의 가장 기초이면서도 가장 강력한 수단입니다.</p>
+          <p>결국 설정한 문제 상황의 핵심은, 약물 오남용이 개인의 선택 문제가 아니라 건강권과 안전, 미래 가능성을 위협하는 구조적 위험이라는 데 있습니다. 따라서 예방 자료는 막연한 공포 조성보다는 신체 변화, 뇌 기능 변화, 사회적 파급 효과를 입체적으로 보여주어야 하며, 사용자가 스스로 위험을 판단하고 거부할 수 있도록 만드는 방향으로 설계되어야 합니다. 이러한 접근은 단지 지식을 전달하는 데 그치지 않고, 건강과 웰빙을 지키기 위한 실제적 판단 능력을 형성한다는 점에서 매우 중요합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen subpage" id="solution-screen">
+      <button class="top-back back-home">← 이전으로</button>
+      <div class="scroll-hero hero-blue" data-fill="solution-fill">
+        <div class="hero-fill" id="solution-fill"></div>
+        <div class="small-label">해결방안</div>
+        <h2 class="big-title">예방 중심 접근, 정보 정확성, 반복 가능한 교육 구조</h2>
+      </div>
+      <div class="content-shell">
+        <div class="content-box">
+          <p>마약류 오남용 문제에 대한 해결방안은 단속 강화만으로 완성되지 않습니다. 실질적인 예방 효과를 얻기 위해서는 접근 이전 단계에서 위험 인식을 높이고, 사용 유인을 낮추며, 거부 역량을 강화하는 구조가 필요합니다. 즉, 문제 발생 후 대응이 아니라 문제 발생 전 차단이 중심이 되어야 합니다. 이를 위해 첫째로 필요한 것은 정보의 정확성입니다. 청소년과 일반 대중이 약물에 대해 접하는 정보는 종종 과장되거나 왜곡되어 있습니다. 어떤 경우에는 ‘
