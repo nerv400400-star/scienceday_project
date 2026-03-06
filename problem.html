@@ -1,1 +1,123 @@
-dd
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>설정한 문제 상황</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Pretendard", "Noto Sans KR", Arial, sans-serif;
+      background: #ffffff;
+      color: #111;
+    }
+    .back {
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      z-index: 100;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.72);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.16);
+      backdrop-filter: blur(8px);
+    }
+    .hero {
+      position: sticky;
+      top: 0;
+      height: 56vh;
+      min-height: 360px;
+      overflow: hidden;
+      color: #fff;
+      background: linear-gradient(180deg, #22be57 0%, #0d6d2e 100%);
+    }
+    .fill {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #22be57 0%, #0d6d2e 100%);
+      transform: translateY(0%);
+      will-change: transform;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      padding: 88px 40px 30px;
+    }
+    .small {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 22px;
+      letter-spacing: -0.03em;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4.6rem);
+      line-height: 1.03;
+      letter-spacing: -0.05em;
+    }
+    .content {
+      position: relative;
+      z-index: 2;
+      background: #fff;
+      padding: 44px 0 90px;
+    }
+    .box {
+      width: min(980px, calc(100% - 40px));
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 24px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.15);
+      padding: 34px 28px;
+    }
+    p {
+      margin: 0 0 18px;
+      line-height: 1.95;
+      font-size: 1rem;
+      word-break: keep-all;
+    }
+  </style>
+</head>
+<body>
+  <a class="back" href="index.html">← 이전으로</a>
+
+  <section class="hero" id="hero">
+    <div class="fill" id="fill"></div>
+    <div class="hero-inner">
+      <div class="small">설정한 문제 상황</div>
+      <h1>SDGs 3번 건강과 웰빙 증진</h1>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="box">
+      <p>현대 사회에서 마약류 오남용은 개인의 선택 문제를 넘어 건강과 안전, 공동체의 안정성까지 위협하는 복합적 문제로 확대되고 있습니다. 특히 청소년과 청년층은 호기심, 스트레스, 또래 압력, 온라인 공간을 통한 왜곡된 정보에 의해 예상보다 쉽게 약물 관련 위험에 노출될 수 있습니다. 처음에는 단순한 흥미나 일시적 기분 전환처럼 보일 수 있으나, 실제로는 짧은 시간 안에 판단력 저하, 반복 사용 욕구 증가, 자기 통제력 약화로 이어질 수 있다는 점에서 매우 위험합니다. 이러한 특성 때문에 마약류 오남용은 단순히 불법 행위로만 이해해서는 부족하며, 신체와 정신, 그리고 사회적 관계 전반을 무너뜨릴 수 있는 건강 문제로 다뤄져야 합니다.</p>
+      <p>약물이 체내에 들어오면 혈류를 따라 여러 기관으로 전달되며, 최종적으로는 뇌의 보상 체계와 신경전달 구조에 영향을 미치게 됩니다. 이 과정에서 사용자는 일시적인 각성, 진정, 환각, 기분 상승 등 특정 효과를 경험할 수 있지만, 동시에 심혈관계 부담, 호흡기 손상, 간과 신장의 대사 부담 증가, 신경계 기능 이상과 같은 심각한 부작용이 함께 진행됩니다. 특히 성장기 청소년의 경우 뇌와 신경계가 완전히 발달하지 않은 상태이므로 충동 조절, 감정 조절, 의사결정 능력에 더 큰 손상을 입을 수 있습니다. 따라서 청소년의 마약류 노출은 성인보다도 장기적인 부정적 영향이 클 가능성이 높습니다.</p>
+      <p>문제는 이러한 위험이 개인에게만 머무르지 않는다는 점입니다. 약물 사용은 학업 저하, 가족 관계 악화, 학교 부적응, 경제적 문제, 범죄 연루 가능성 증가와 같은 사회적 파급 효과를 동반할 수 있습니다. 실제로 초기 사용 단계에서는 스스로 통제 가능하다고 생각하는 경우가 많지만, 시간이 지날수록 의존성이 형성되면서 자기 판단이 왜곡되고, 주변의 도움 요청이나 경고도 무시하게 되는 경우가 있습니다. 이처럼 마약류 오남용은 한 개인의 건강권을 침해하는 동시에 공동체 전체의 복지와 안전에도 부정적 영향을 미치는 문제입니다.</p>
+      <p>SDGs 3번은 모든 사람이 건강한 삶을 누리고 웰빙을 증진할 수 있도록 하는 것을 목표로 합니다. 이 관점에서 보면 마약류 오남용 예방은 단순한 캠페인 차원이 아니라 핵심적인 공중보건 과제입니다. 건강한 삶은 단지 질병이 없는 상태가 아니라, 신체적 안정과 정신적 균형, 사회적 기능이 유지되는 상태까지 포함합니다. 약물 오남용은 이 세 요소를 동시에 훼손할 수 있기 때문에, 예방 교육은 보건교육의 부가적 요소가 아니라 중심 과제로 구성되어야 합니다.</p>
+      <p>또한 예방 자료는 단순한 경고 문구만으로는 충분하지 않습니다. 마약류가 신체 내부를 어떻게 이동하고, 뇌에 어떤 영향을 주며, 왜 반복 사용이 위험한지 구체적으로 보여주어야 사용자가 실제 위험을 체감할 수 있습니다. 즉, 공포를 조성하는 방식이 아니라 정확한 정보와 시각적 전달을 결합해 스스로 판단하고 거부할 수 있는 능력을 길러주는 방향이 중요합니다. 이러한 점에서 설정한 문제 상황의 핵심은 마약류 오남용이 개인적 호기심의 문제가 아니라 건강권과 웰빙, 미래의 삶 전체를 위협하는 구조적 위험이라는 사실을 분명하게 드러내는 데 있습니다.</p>
+    </div>
+  </section>
+
+  <script>
+    const hero = document.getElementById('hero');
+    const fill = document.getElementById('fill');
+
+    function updateFill() {
+      const rect = hero.getBoundingClientRect();
+      const h = hero.offsetHeight || 1;
+      const progress = Math.min(Math.max(-rect.top / h, 0), 1);
+      fill.style.transform = `translateY(${-progress * 100}%)`;
+    }
+
+    window.addEventListener('scroll', updateFill, { passive: true });
+    window.addEventListener('resize', updateFill);
+    updateFill();
+  </script>
+</body>
+</html>
