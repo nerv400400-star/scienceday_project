@@ -512,45 +512,30 @@
         <aside class="sidebar">
           <div class="sidebar-top">
             <h1>마약류 오남용 예방 자료</h1>
-            <p>사이드바 메뉴를 통해 문제 상황, 해결방안, 실제 예방 자료 구현 화면으로 이동할 수 있습니다.</p>
+            
             <div class="menu">
-              <button class="menu-btn" data-target="problem-screen">
+              <button type="button" class="menu-btn" data-target="problem-screen" onclick="showScreen('problem-screen')">
                 <strong>설정한 문제 상황</strong>
-                <span>문제 정의, SDGs 3번과의 연계, 위험성 서술 영역</span>
+                
               </button>
-              <button class="menu-btn" data-target="solution-screen">
+              <button type="button" class="menu-btn" data-target="solution-screen" onclick="showScreen('solution-screen')">
                 <strong>해결방안</strong>
-                <span>예방 전략, 교육 방향, 실천 방안 정리 영역</span>
+                
               </button>
-              <button class="menu-btn" data-target="implementation-screen">
+              <button type="button" class="menu-btn" data-target="implementation-screen" onclick="showScreen('implementation-screen')">
                 <strong>실제 예방 자료 구현</strong>
-                <span>신체 전달 경로 및 신경계 영향 시각화 애니메이션</span>
+                
               </button>
             </div>
           </div>
-          <div class="sidebar-footer">
-            본 페이지는 GitHub Pages 환경에서 바로 실행될 수 있도록 단일 HTML 구조로 제작되었습니다.
-          </div>
+          
         </aside>
 
         <main class="home-main">
           <div class="home-hero">
             <div class="hero-image"></div>
             <div class="hero-overlay">
-              <div class="hero-copy">
-                <div class="hero-kicker">Prevention Campaign Web Page</div>
-                <h2>마약류 오남용의 위험성과<br>예방의 필요성</h2>
-                <p>
-                  시각적 충격과 정보 전달을 결합한 구조로, 문제 상황의 인식부터 해결방안 제시,
-                  실제 예방 자료 구현까지 단계적으로 확인할 수 있도록 구성한 페이지입니다.
-                </p>
-              </div>
-
               <div class="hero-bottom">
-                <div class="hero-bottom-left">
-                  검은 배경 위 강한 대비를 활용해 주제의 위험성과 긴장감을 드러내고,<br>
-                  각 세부 페이지에서는 색상과 스크롤 애니메이션으로 정보의 성격을 분리해 표현합니다.
-                </div>
                 <div class="hero-bottom-right">권태선, 양서진, 오석준, 안세훈 제작</div>
               </div>
             </div>
@@ -560,7 +545,7 @@
     </section>
 
     <section class="screen subpage" id="problem-screen">
-      <button class="top-back back-home">← 이전으로</button>
+      <button type="button" class="top-back back-home" onclick="showScreen('home-screen')">← 이전으로</button>
       <div class="scroll-hero hero-green" data-fill="problem-fill">
         <div class="hero-fill" id="problem-fill"></div>
         <div class="small-label">설정한 문제 상황</div>
@@ -578,7 +563,7 @@
     </section>
 
     <section class="screen subpage" id="solution-screen">
-      <button class="top-back back-home">← 이전으로</button>
+      <button type="button" class="top-back back-home" onclick="showScreen('home-screen')">← 이전으로</button>
       <div class="scroll-hero hero-blue" data-fill="solution-fill">
         <div class="hero-fill" id="solution-fill"></div>
         <div class="small-label">해결방안</div>
@@ -586,4 +571,194 @@
       </div>
       <div class="content-shell">
         <div class="content-box">
-          <p>마약류 오남용 문제에 대한 해결방안은 단속 강화만으로 완성되지 않습니다. 실질적인 예방 효과를 얻기 위해서는 접근 이전 단계에서 위험 인식을 높이고, 사용 유인을 낮추며, 거부 역량을 강화하는 구조가 필요합니다. 즉, 문제 발생 후 대응이 아니라 문제 발생 전 차단이 중심이 되어야 합니다. 이를 위해 첫째로 필요한 것은 정보의 정확성입니다. 청소년과 일반 대중이 약물에 대해 접하는 정보는 종종 과장되거나 왜곡되어 있습니다. 어떤 경우에는 ‘
+          <p>마약류 오남용 문제에 대한 해결방안은 단속 강화만으로 완성되지 않습니다. 실질적인 예방 효과를 얻기 위해서는 접근 이전 단계에서 위험 인식을 높이고, 사용 유인을 낮추며, 거부 역량을 강화하는 구조가 필요합니다. 즉, 문제 발생 후 대응이 아니라 문제 발생 전 차단이 중심이 되어야 합니다. 이를 위해 첫째로 필요한 것은 정보의 정확성입니다. 청소년과 일반 대중이 약물에 대해 접하는 정보는 종종 과장되거나 왜곡되어 있습니다. 어떤 경우에는 ‘한 번쯤은 괜찮다’, ‘중독은 특정 사람에게만 생긴다’, ‘기분 전환용으로만 쓰면 안전하다’와 같은 잘못된 인식이 퍼져 있습니다. 따라서 예방 교육은 추상적 금지보다 약물이 몸속에서 어떤 경로를 거쳐 뇌에 작용하는지, 어떤 장기적 손상을 남기는지, 왜 반복 사용이 통제 상실로 이어질 수 있는지를 구체적으로 설명해야 합니다. 정보가 정밀할수록 경고는 더 설득력을 가집니다.</p>
+          <p>둘째로, 예방 교육의 방식이 바뀌어야 합니다. 단순 강의식 전달은 순간적인 주의 환기는 가능하지만 오래 기억되기 어렵습니다. 반면 시각 자료와 단계적 스토리텔링을 결합하면 사용자에게 더 강한 인상을 남길 수 있습니다. 예를 들어 약물이 체내로 유입된 뒤 혈관을 통해 이동하고, 최종적으로 뇌의 보상회로와 시냅스 수준에서 신경전달을 교란하는 과정을 시각화하면, 사용자는 약물의 위험을 단지 문자 정보가 아니라 실제 변화의 흐름으로 인식하게 됩니다. 이러한 구조는 특히 청소년 교육에서 효과적입니다. 추상적 위험보다 구체적 경로와 결과를 볼 때, 행동 억제와 자기 통제가 더 잘 작동하기 때문입니다. 따라서 예방 자료는 ‘하지 마라’는 명령형 문장보다 ‘왜 위험한가’를 보여주는 시각적 설계가 중심이 되어야 합니다.</p>
+          <p>셋째로, 환경적 예방이 병행되어야 합니다. 개인의 의지만 강조하는 접근은 현실적으로 한계가 있습니다. 또래 압력, 정서적 불안, 온라인 유통, 익명성, 충동적 행동이 결합되면 개인은 쉽게 흔들릴 수 있습니다. 그러므로 학교와 지역사회는 약물 유혹 상황을 미리 상정하고, 거절 대화법, 도움 요청 경로, 위기 시 신고 및 상담 절차를 반복적으로 훈련해야 합니다. 예를 들어 ‘권유를 받았을 때 어떻게 말할 것인가’, ‘친구가 약물에 노출된 것 같을 때 누구에게 알릴 것인가’, ‘인터넷에서 수상한 권유를 받았을 때 어떤 증거를 남기고 차단할 것인가’를 실제 상황처럼 연습하게 하면, 위기 대응 능력은 훨씬 높아집니다. 예방은 지식만이 아니라 행동 루틴을 만드는 작업이어야 합니다.</p>
+          <p>넷째로, 정서 지원 체계가 중요합니다. 많은 약물 사용은 단순 호기심이 아니라 불안, 우울, 외로움, 스트레스, 실패 경험, 소속감 결핍과 연결됩니다. 따라서 예방 정책은 정신 건강 지원과 분리될 수 없습니다. 학교 상담 시스템, 또래 지지 체계, 교사와 보호자의 조기 관찰, 지역사회 정신건강 자원 연계가 함께 작동해야 합니다. 누군가가 약물 사용의 위험 신호를 보일 때, 도덕적 비난만으로는 개입 효과가 낮습니다. 오히려 적절한 상담과 치료 연결, 심리적 지지, 재발 방지 교육이 포함되어야 실질적인 회복과 재예방이 가능합니다. 결국 건강과 웰빙이라는 목표는 신체 건강만이 아니라, 약물 사용의 배경이 되는 정서적 취약성까지 다루는 통합적 접근을 요구합니다.</p>
+          <p>다섯째로, 반복 가능한 디지털 자료 구축이 필요합니다. 일회성 캠페인은 인상은 남길 수 있어도 행동 변화로 이어지기 어렵습니다. 반면 웹 기반 자료는 언제든 다시 접근할 수 있고, 시각 자료와 텍스트, 애니메이션, 상호작용을 결합할 수 있다는 장점이 있습니다. 사용자는 홈 화면에서 핵심 문제를 직관적으로 인식하고, 문제 상황 페이지에서 사회적 맥락과 건강 위협을 이해하며, 해결방안 페이지에서 구체적 대응 전략을 읽고, 실제 예방 자료 구현 페이지에서 몸과 뇌가 연결되는 과정을 시각적으로 경험할 수 있습니다. 이러한 구조는 단순 정보 나열이 아니라 단계적 학습 동선을 제공한다는 점에서 교육적으로 효율적입니다. 특히 GitHub Pages와 같은 공개 가능한 환경에 올릴 수 있으면 학교 발표, 캠페인 전시, 수업 자료 공유에도 쉽게 활용할 수 있습니다.</p>
+          <p>여섯째로, 전달 대상에 맞는 언어 조정이 필요합니다. 전문가용 자료와 청소년용 자료는 동일한 내용을 담더라도 표현 방식이 달라야 합니다. 청소년에게는 지나치게 의학적이거나 법률적인 문구만으로 접근하면 집중도가 낮아질 수 있습니다. 따라서 핵심 개념은 쉽게 설명하되, 내용의 정확성은 유지해야 합니다. 예를 들어 ‘도파민 시스템 교란’이라는 표현을 그대로 쓰더라도, 그것이 왜 반복 욕구와 연결되는지, 왜 스스로 멈추기 어렵게 만드는지까지 풀어서 설명해야 합니다. 즉 쉬운 표현과 전문성은 상충 관계가 아니라 설계의 문제입니다. 잘 만들어진 예방 자료는 누구나 이해할 수 있지만, 내용은 빈약하지 않아야 합니다.</p>
+          <p>마지막으로, 해결방안의 평가는 실제 행동 변화 기준으로 이루어져야 합니다. 단순히 자료를 봤는지 여부가 아니라, 약물 권유 상황에서 거절 의사를 표현할 수 있는지, 위험 정보를 식별할 수 있는지, 도움이 필요한 친구를 어디에 연결해야 하는지, 약물의 신체적·정신적 피해를 설명할 수 있는지와 같은 지표가 중요합니다. 예방은 공포심을 심는 것이 아니라, 인식과 판단, 행동과 연결의 체계를 만드는 작업입니다. 따라서 본 자료의 해결방안은 정보 전달, 시각화, 행동 훈련, 정서 지원, 디지털 반복 학습을 하나의 흐름으로 묶어 실질적인 예방 효과를 만드는 데 목적이 있습니다. 이것이 건강과 웰빙 증진이라는 목표를 가장 현실적으로 구현하는 방향입니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="implementation-screen">
+      <button type="button" class="top-back back-home" onclick="showScreen('home-screen')">← 이전으로</button>
+      <div class="impl-page">
+        <div class="impl-wrap">
+          <div class="impl-header">
+            <div class="impl-small">실제 예방 자료 구현</div>
+            <h2 class="impl-title">약물의 체내 전달과 뇌 신경계 영향 시각화</h2>
+          </div>
+
+          <div class="stage" id="stage">
+            <div class="slide active" id="slide-vessel">
+              <img src="vessel_map.png" alt="인체 혈관 및 장기 지도" />
+              <div class="pulse-dot" id="pulse-dot"></div>
+            </div>
+            <div class="slide" id="slide-brain">
+              <img src="brain.jpg" alt="뇌 자극 이미지" />
+            </div>
+            <div class="slide" id="slide-synapse">
+              <img src="synapse.jpg" alt="시냅스 전달 이미지" />
+            </div>
+          </div>
+
+          <div class="impl-caption"><div class="space-guide" id="space-guide">다시 재생하고 싶으면 스페이스바를 누르세요</div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const screens = document.querySelectorAll('.screen');
+    const menuButtons = document.querySelectorAll('.menu-btn');
+    const backButtons = document.querySelectorAll('.back-home');
+    const spaceGuide = document.getElementById('space-guide');
+
+    function showScreen(id) {
+      screens.forEach(screen => screen.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo(0, 0);
+
+      if (id === 'implementation-screen') {
+        startSequence();
+      } else {
+        stopSequence();
+      }
+    }
+
+    
+
+    function updateStickyFill() {
+      document.querySelectorAll('.scroll-hero').forEach(hero => {
+        const fillId = hero.dataset.fill;
+        const fill = document.getElementById(fillId);
+        if (!fill) return;
+        const rect = hero.getBoundingClientRect();
+        const height = hero.offsetHeight || 1;
+        const progress = Math.min(Math.max(-rect.top / height, 0), 1);
+        fill.style.transform = `translateY(${-progress * 100}%)`;
+      });
+    }
+
+    window.addEventListener('scroll', updateStickyFill, { passive: true });
+    window.addEventListener('resize', updateStickyFill);
+    updateStickyFill();
+
+    // IMPLEMENTATION ANIMATION
+    const slideVessel = document.getElementById('slide-vessel');
+    const slideBrain = document.getElementById('slide-brain');
+    const slideSynapse = document.getElementById('slide-synapse');
+    const pulseDot = document.getElementById('pulse-dot');
+    const stage = document.getElementById('stage');
+
+    let sequenceTimers = [];
+    let sequenceRunning = false;
+    let pathFrame = null;
+
+    function clearTimers() {
+      sequenceTimers.forEach(t => clearTimeout(t));
+      sequenceTimers = [];
+      if (pathFrame) cancelAnimationFrame(pathFrame);
+      pathFrame = null;
+    }
+
+    function resetSlides() {
+      slideVessel.classList.add('active');
+      slideBrain.classList.remove('active', 'zooming');
+      slideSynapse.classList.remove('active', 'zooming');
+      pulseDot.style.opacity = '0';
+      pulseDot.classList.remove('animating');
+      spaceGuide.style.opacity = '0.55';
+    }
+
+    function setDotPosition(xPercent, yPercent) {
+      const rect = stage.getBoundingClientRect();
+      pulseDot.style.left = (rect.width * xPercent) + 'px';
+      pulseDot.style.top = (rect.height * yPercent) + 'px';
+    }
+
+    function animatePath(duration = 2000) {
+      const points = [
+        { x: 0.18, y: 0.57 },
+        { x: 0.25, y: 0.52 },
+        { x: 0.33, y: 0.47 },
+        { x: 0.42, y: 0.41 },
+        { x: 0.51, y: 0.31 },
+        { x: 0.56, y: 0.20 }
+      ];
+
+      const start = performance.now();
+      pulseDot.style.opacity = '1';
+      pulseDot.classList.add('animating');
+
+      function frame(now) {
+        const elapsed = now - start;
+        const t = Math.min(elapsed / duration, 1);
+        const totalSegments = points.length - 1;
+        const scaled = t * totalSegments;
+        const idx = Math.min(Math.floor(scaled), totalSegments - 1);
+        const localT = scaled - idx;
+        const p1 = points[idx];
+        const p2 = points[idx + 1];
+        const x = p1.x + (p2.x - p1.x) * localT;
+        const y = p1.y + (p2.y - p1.y) * localT;
+        setDotPosition(x, y);
+
+        if (t < 1) {
+          pathFrame = requestAnimationFrame(frame);
+        }
+      }
+
+      pathFrame = requestAnimationFrame(frame);
+    }
+
+    function stopSequence() {
+      sequenceRunning = false;
+      clearTimers();
+      resetSlides();
+    }
+
+    function startSequence() {
+      clearTimers();
+      resetSlides();
+      sequenceRunning = true;
+      spaceGuide.style.opacity = '0.25';
+
+      animatePath(2000);
+
+      sequenceTimers.push(setTimeout(() => {
+        slideVessel.classList.remove('active');
+        slideBrain.classList.add('active', 'zooming');
+      }, 2000));
+
+      sequenceTimers.push(setTimeout(() => {
+        slideBrain.classList.remove('active', 'zooming');
+        slideSynapse.classList.add('active', 'zooming');
+      }, 3000));
+
+      sequenceTimers.push(setTimeout(() => {
+        slideSynapse.classList.remove('zooming');
+        spaceGuide.style.opacity = '1';
+        sequenceRunning = false;
+      }, 4200));
+    }
+
+    window.addEventListener('keydown', (event) => {
+      const implementationActive = document.getElementById('implementation-screen').classList.contains('active');
+      if (!implementationActive) return;
+      if (event.code === 'Space') {
+        event.preventDefault();
+        startSequence();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (document.getElementById('implementation-screen').classList.contains('active') && !sequenceRunning) {
+        setDotPosition(0.56, 0.20);
+      }
+    });
+  </script>
+</body>
+</html>
