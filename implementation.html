@@ -6,12 +6,14 @@
   <title>실제 예방 자료 구현</title>
   <style>
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: "Pretendard", "Noto Sans KR", Arial, sans-serif;
       background: #04070d;
       color: #fff;
     }
+
     .back {
       position: fixed;
       top: 18px;
@@ -26,23 +28,27 @@
       border: 1px solid rgba(255,255,255,0.16);
       backdrop-filter: blur(8px);
     }
+
     .wrap {
       width: min(1120px, calc(100% - 40px));
       margin: 0 auto;
       padding: 90px 0 40px;
     }
+
     .small {
       font-size: 0.95rem;
       color: #cfd8ff;
       font-weight: 700;
       margin-bottom: 10px;
     }
+
     h1 {
       margin: 0 0 22px;
       font-size: clamp(2rem, 4vw, 3.6rem);
       line-height: 1.05;
       letter-spacing: -0.05em;
     }
+
     .stage {
       position: relative;
       width: 100%;
@@ -52,53 +58,80 @@
       border: 1px solid rgba(255,255,255,0.12);
       box-shadow: 0 18px 50px rgba(0,0,0,0.35);
       background: #09111f;
+      cursor: pointer;
+      user-select: none;
     }
+
     .slide {
       position: absolute;
       inset: 0;
       opacity: 0;
-      transition: opacity 0.6s ease;
+      transition: opacity 0.9s ease;
       display: flex;
       align-items: center;
       justify-content: center;
       background: #09111f;
     }
+
     .slide.active {
       opacity: 1;
       z-index: 2;
     }
+
     .slide img {
       width: 100%;
       height: 100%;
       object-fit: contain;
       background: #09111f;
+      transform: scale(1);
     }
+
     .zoom img {
-      animation: zoomIn 1s ease forwards;
+      animation: zoomSlow 10s linear forwards;
     }
-    @keyframes zoomIn {
+
+    @keyframes zoomSlow {
       from { transform: scale(1); }
-      to { transform: scale(1.12); }
+      to { transform: scale(1.16); }
     }
+
     .pulse-dot {
       position: absolute;
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       background: #ff2d2d;
-      box-shadow: 0 0 0 0 rgba(255,45,45,0.7), 0 0 18px 8px rgba(255,45,45,0.55);
+      box-shadow:
+        0 0 0 0 rgba(255,45,45,0.75),
+        0 0 18px 8px rgba(255,45,45,0.58);
       transform: translate(-50%, -50%);
       opacity: 0;
-      z-index: 3;
+      z-index: 5;
+      pointer-events: none;
     }
+
     .pulse-dot.animating {
-      animation: dotPulse 0.9s infinite;
+      animation: dotPulse 1s infinite;
     }
+
     @keyframes dotPulse {
-      0% { box-shadow: 0 0 0 0 rgba(255,45,45,0.6), 0 0 18px 8px rgba(255,45,45,0.5); }
-      70% { box-shadow: 0 0 0 18px rgba(255,45,45,0), 0 0 22px 10px rgba(255,45,45,0.36); }
-      100% { box-shadow: 0 0 0 0 rgba(255,45,45,0), 0 0 18px 8px rgba(255,45,45,0.5); }
+      0% {
+        box-shadow:
+          0 0 0 0 rgba(255,45,45,0.6),
+          0 0 18px 8px rgba(255,45,45,0.52);
+      }
+      70% {
+        box-shadow:
+          0 0 0 18px rgba(255,45,45,0),
+          0 0 24px 10px rgba(255,45,45,0.36);
+      }
+      100% {
+        box-shadow:
+          0 0 0 0 rgba(255,45,45,0),
+          0 0 18px 8px rgba(255,45,45,0.52);
+      }
     }
+
     .guide {
       margin-top: 18px;
       display: inline-block;
@@ -108,6 +141,26 @@
       border: 1px solid rgba(255,255,255,0.1);
       font-weight: 700;
       color: #d7def5;
+    }
+
+    .path-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .path-overlay path {
+      fill: none;
+      stroke: transparent;
+      stroke-width: 10;
+    }
+
+    @media (max-width: 720px) {
+      .wrap {
+        width: min(1120px, calc(100% - 20px));
+        padding-top: 78px;
+      }
     }
   </style>
 </head>
@@ -121,77 +174,98 @@
     <div class="stage" id="stage">
       <div class="slide active" id="slide-vessel">
         <img src="vessel_map.png" alt="인체 혈관 및 장기 지도" />
+        <svg class="path-overlay" id="path-overlay" viewBox="0 0 1600 900" preserveAspectRatio="none">
+          <!--
+            팔꿈치 부근(왼쪽 팔) → 상완 → 어깨 → 목 → 뇌 방향으로 조정한 경로
+            실제 이미지 비율 기준 상대좌표라서 기존보다 훨씬 자연스럽게 이동합니다.
+          -->
+          <path id="blood-path"
+            d="M 175 455
+               C 210 430, 250 400, 300 360
+               C 350 320, 420 280, 500 250
+               C 560 228, 615 210, 675 192
+               C 730 178, 770 150, 805 112" />
+        </svg>
         <div class="pulse-dot" id="pulse-dot"></div>
       </div>
+
       <div class="slide" id="slide-brain">
         <img src="brain.jpg" alt="뇌 자극 이미지" />
       </div>
+
       <div class="slide" id="slide-synapse">
         <img src="synapse.jpg" alt="시냅스 전달 이미지" />
       </div>
     </div>
 
-    <div class="guide" id="guide">다시 재생하고 싶으면 스페이스바를 누르세요</div>
+    <div class="guide" id="guide">다시 재생하고 싶으면 화면을 클릭하세요</div>
   </div>
 
   <script>
-    const slideVessel = document.getElementById('slide-vessel');
-    const slideBrain = document.getElementById('slide-brain');
-    const slideSynapse = document.getElementById('slide-synapse');
-    const pulseDot = document.getElementById('pulse-dot');
-    const stage = document.getElementById('stage');
+    const stage = document.getElementById("stage");
+    const slideVessel = document.getElementById("slide-vessel");
+    const slideBrain = document.getElementById("slide-brain");
+    const slideSynapse = document.getElementById("slide-synapse");
+    const pulseDot = document.getElementById("pulse-dot");
+    const bloodPath = document.getElementById("blood-path");
 
     let timers = [];
     let frameId = null;
+    let running = false;
+
+    const DUR_VESSEL = 10000;   // 첫 장면 10초
+    const DUR_BRAIN = 10000;    // 두번째 장면 10초
+    const DUR_SYNAPSE = 10000;  // 세번째 장면 10초
 
     function clearAll() {
       timers.forEach(clearTimeout);
       timers = [];
       if (frameId) cancelAnimationFrame(frameId);
       frameId = null;
+      running = false;
+    }
+
+    function showOnly(target) {
+      [slideVessel, slideBrain, slideSynapse].forEach(slide => {
+        slide.classList.remove("active", "zoom");
+      });
+      target.classList.add("active");
     }
 
     function resetSlides() {
-      slideVessel.classList.add('active');
-      slideBrain.classList.remove('active', 'zoom');
-      slideSynapse.classList.remove('active', 'zoom');
-      pulseDot.style.opacity = '0';
-      pulseDot.classList.remove('animating');
+      showOnly(slideVessel);
+      pulseDot.style.opacity = "0";
+      pulseDot.classList.remove("animating");
+      slideBrain.classList.remove("zoom");
+      slideSynapse.classList.remove("zoom");
     }
 
-    function setDotPosition(xPercent, yPercent) {
-      const rect = stage.getBoundingClientRect();
-      pulseDot.style.left = (rect.width * xPercent) + 'px';
-      pulseDot.style.top = (rect.height * yPercent) + 'px';
+    function getPathPoint(progress) {
+      const totalLength = bloodPath.getTotalLength();
+      return bloodPath.getPointAtLength(totalLength * progress);
     }
 
-    function animatePath(duration = 2000) {
-      const points = [
-        { x: 0.18, y: 0.57 },
-        { x: 0.25, y: 0.52 },
-        { x: 0.33, y: 0.47 },
-        { x: 0.42, y: 0.41 },
-        { x: 0.51, y: 0.31 },
-        { x: 0.56, y: 0.20 }
-      ];
+    function positionDotAt(progress) {
+      const point = getPathPoint(progress);
+      const stageRect = stage.getBoundingClientRect();
+      const svgRect = document.getElementById("path-overlay").getBoundingClientRect();
 
+      const x = point.x / 1600 * stageRect.width;
+      const y = point.y / 900 * stageRect.height;
+
+      pulseDot.style.left = `${x}px`;
+      pulseDot.style.top = `${y}px`;
+    }
+
+    function animateBloodFlow(duration = DUR_VESSEL) {
       const start = performance.now();
-      pulseDot.style.opacity = '1';
-      pulseDot.classList.add('animating');
+      pulseDot.style.opacity = "1";
+      pulseDot.classList.add("animating");
 
       function frame(now) {
         const elapsed = now - start;
         const t = Math.min(elapsed / duration, 1);
-        const total = points.length - 1;
-        const scaled = t * total;
-        const idx = Math.min(Math.floor(scaled), total - 1);
-        const localT = scaled - idx;
-
-        const p1 = points[idx];
-        const p2 = points[idx + 1];
-        const x = p1.x + (p2.x - p1.x) * localT;
-        const y = p1.y + (p2.y - p1.y) * localT;
-        setDotPosition(x, y);
+        positionDotAt(t);
 
         if (t < 1) {
           frameId = requestAnimationFrame(frame);
@@ -204,35 +278,40 @@
     function startSequence() {
       clearAll();
       resetSlides();
+      running = true;
 
-      animatePath(2000);
-
-      timers.push(setTimeout(() => {
-        slideVessel.classList.remove('active');
-        slideBrain.classList.add('active', 'zoom');
-      }, 2000));
+      animateBloodFlow(DUR_VESSEL);
 
       timers.push(setTimeout(() => {
-        slideBrain.classList.remove('active', 'zoom');
-        slideSynapse.classList.add('active', 'zoom');
-      }, 3000));
+        pulseDot.style.opacity = "0";
+        pulseDot.classList.remove("animating");
+        showOnly(slideBrain);
+        slideBrain.classList.add("zoom");
+      }, DUR_VESSEL));
 
       timers.push(setTimeout(() => {
-        slideSynapse.classList.remove('zoom');
-      }, 4200));
+        slideBrain.classList.remove("zoom");
+        showOnly(slideSynapse);
+        slideSynapse.classList.add("zoom");
+      }, DUR_VESSEL + DUR_BRAIN));
+
+      timers.push(setTimeout(() => {
+        slideSynapse.classList.remove("zoom");
+        running = false;
+      }, DUR_VESSEL + DUR_BRAIN + DUR_SYNAPSE));
     }
 
-    window.addEventListener('keydown', (e) => {
-      if (e.code === 'Space') {
-        e.preventDefault();
-        startSequence();
+    stage.addEventListener("click", () => {
+      startSequence();
+    });
+
+    window.addEventListener("resize", () => {
+      if (!running) {
+        positionDotAt(0);
       }
     });
 
-    window.addEventListener('resize', () => {
-      setDotPosition(0.18, 0.57);
-    });
-
+    // 첫 진입 시 1회 자동 재생
     startSequence();
   </script>
 </body>
