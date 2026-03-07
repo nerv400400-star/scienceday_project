@@ -88,8 +88,6 @@
     <div class="slide"><img src="no_tough.png" alt="image 5"></div>
   </div>
 
-  <div class="caption">5초 간격 순환 재생</div>
-
   <script>
     const slides = document.querySelectorAll('.slide');
     let current = 0;
@@ -103,7 +101,7 @@
     setInterval(() => {
       current = (current + 1) % slides.length;
       showSlide(current);
-    }, 5000);
+    }, 3000);
   </script>
 </body>
 </html>
