@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>마약 종류별 증상</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Pretendard", "Noto Sans KR", Arial, sans-serif;
+      background: #ffffff;
+      color: #111;
+    }
+
+    .back {
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      z-index: 100;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.72);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.16);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero {
+      position: sticky;
+      top: 0;
+      height: 56vh;
+      min-height: 360px;
+      overflow: hidden;
+      color: #fff;
+      background: linear-gradient(180deg, #ff3b30 0%, #9f1010 100%);
+    }
+
+    .fill {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #ff3b30 0%, #9f1010 100%);
+      transform: translateY(0%);
+      will-change: transform;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      padding: 88px 40px 30px;
+    }
+
+    .small {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 22px;
+      letter-spacing: -0.03em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      line-height: 1.03;
+      letter-spacing: -0.05em;
+      max-width: 980px;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      background: #fff;
+      padding: 44px 0 90px;
+    }
+
+    .box {
+      width: min(1040px, calc(100% - 40px));
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 24px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.15);
+      padding: 34px 28px;
+    }
+
+    .intro {
+      margin-bottom: 34px;
+      padding: 22px 20px;
+      background: #fff5f5;
+      border: 1px solid rgba(255,59,48,0.15);
+      border-radius: 18px;
+      line-height: 1.9;
+    }
+
+    .drug-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .drug-card {
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 20px;
+      padding: 22px 20px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    }
+
+    .drug-card h2 {
+      margin: 0 0 14px;
+      font-size: 1.5rem;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      color: #b11515;
+    }
+
+    .drug-card p {
+      margin: 0 0 12px;
+      line-height: 1.9;
+      font-size: 1rem;
+      word-break: keep-all;
+    }
+
+    .label {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #ffe3e3;
+      color: #a31313;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 720px) {
+      .hero-inner {
+        padding: 88px 22px 24px;
+      }
+
+      .box {
+        width: min(1040px, calc(100% - 20px));
+        padding: 22px 16px;
+      }
+
+      .drug-card {
+        padding: 18px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="back" href="index.html">← 이전으로</a>
+
+  <section class="hero" id="hero">
+    <div class="fill" id="fill"></div>
+    <div class="hero-inner">
+      <div class="small">마약 종류별 증상</div>
+      <h1>주요 마약류의 대표 증상과 오남용 시 위험</h1>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="box">
+      <div class="intro">
+        이 페이지는 주요 마약류가 유발하는 대표적 증상과 오남용 시 나타날 수 있는 신체적·정신적 위험을 종류별로 정리한 것입니다. 같은 마약류라도 개인 상태, 복용량, 복용 방법에 따라 반응은 달라질 수 있지만, 공통적으로 감각 왜곡, 중독, 판단력 저하, 신체 손상, 금단 증상 등 심각한 문제가 뒤따를 수 있습니다.
+      </div>
+
+      <div class="drug-list">
+        <article class="drug-card">
+          <div class="label">1. LSD</div>
+          <h2>LSD</h2>
+          <p>LSD는 지각, 정서, 기억, 시간 감각 전반을 강하게 왜곡시키는 환각성 약물입니다. 시각과 청각의 왜곡이 흔하며, 색채가 달라 보이거나 기하학적 무늬가 보이고, 소리를 색으로 느끼는 공감각이 나타날 수 있습니다. 몸이 떠다니는 느낌이나 현실과 분리된 듯한 감각도 보고됩니다.</p>
+          <p>촉각과 성적 자극이 과도하게 증폭되거나 운동 능력이 비정상적으로 향상된 것처럼 느껴질 수도 있습니다. 그러나 이런 변화는 실제 능력 향상이 아니라 감각 왜곡일 가능성이 크며, 현실 판단을 흐리게 만들어 매우 위험할 수 있습니다.</p>
+        </article>
+
+        <article class="drug-card">
+          <div class="label">2. 필로폰</div>
+          <h2>필로폰</h2>
+          <p>필로폰은 도파민을 크게 증가시켜 강한 각성, 흥분, 자신감, 성취감 같은 상태를 유발할 수 있습니다. 일반적으로 마약은 몽롱함을 만든다고 오해하기 쉽지만, 필로폰은 오히려 정신이 비정상적으로 또렷해진 것처럼 느끼게 하고 극도의 흥분 상태를 만들 수 있습니다.</p>
+          <p>이 과정에서 무모한 행동, 폭력성, 위험한 판단, 범죄 행동 가능성이 증가할 수 있으며, 식욕 저하도 대표적으로 나타납니다. 반복 사용 시 다른 활동에서 쾌감을 거의 느끼지 못하는 무쾌감증이 생길 수 있어 일상 기능이 심각하게 무너질 수 있습니다.</p>
+        </article>
+
+        <article class="drug-card">
+          <div class="label">3. MDMA(엑스터시)</div>
+          <h2>MDMA(엑스터시)</h2>
+          <p>MDMA는 세로토닌 분비를 촉진해 강한 안정감, 행복감, 편안함, 자신감을 느끼게 할 수 있습니다. 다른 사람과의 관계에서 공감 능력이 높아진 것처럼 느끼는 경우도 보고됩니다.</p>
+          <p>하지만 약효가 떨어진 뒤에는 우울감이 지속될 수 있고, 반복 복용 시 효과가 감소할 수 있습니다. 부작용으로는 근육 긴장, 메스꺼움, 갈증, 이를 가는 행동, 식욕 저하, 걸음걸이 불안정, 다리 떨림이 나타날 수 있으며, 심한 경우 저나트륨혈증, 발작, 빈맥, 고혈압까지 발생할 수 있습니다.</p>
+        </article>
+
+        <article class="drug-card">
+          <div class="label">4. 바르비탈류</div>
+          <h2>바르비탈류</h2>
+          <p>바르비탈류는 진정제, 수면제, 마취제 계열로 사용될 수 있는 약물입니다. 용량이 증가할수록 진정에서 수면, 마취 수준까지 효과가 커질 수 있기 때문에 과다 복용 위험이 매우 큽니다.</p>
+          <p>오남용 시 과다 복용과 사망 위험이 있으며, 실제로 자살이나 범죄와 연결된 사례가 언급될 정도로 위험성이 큽니다. 따라서 이 계열 약물은 치료 목적이라 하더라도 매우 엄격한 관리가 필요합니다.</p>
+        </article>
+
+        <article class="drug-card">
+          <div class="label">5. 졸피뎀</div>
+          <h2>졸피뎀</h2>
+          <p>졸피뎀은 대표적인 수면제로 사용되지만 향정신성의약품에 해당합니다. 작용이 빠르고 지속 시간이 짧아 비교적 흔히 처방되지만, 오남용 시 몽유병, 기억상실, 내성, 약물 중독 같은 심각한 문제가 나타날 수 있습니다.</p>
+          <p>치료 용량에서는 상대적으로 덜 위험하다고 여겨질 수 있으나, 반복적 오남용은 정상적인 수면 구조와 기억 기능을 해치고 약물 의존으로 이어질 수 있다는 점에서 주의가 필요합니다.</p>
+        </article>
+
+        <article class="drug-card">
+          <div class="label">6. 프로포폴</div>
+          <h2>프로포폴</h2>
+          <p>프로포폴은 의료 현장에서 마취나 진정 목적으로 사용되지만, 오남용 위험이 큰 약물입니다. 의식 회복 뒤 매우 개운하다거나 짧게 잤는데 깊이 쉰 것 같다는 식의 행복감과 편안함을 느끼는 경우가 많다고 정리되어 있습니다.</p>
+          <p>이러한 다행증은 프로포폴 오남용 문제의 핵심 원인 중 하나로 지적됩니다. 단순히 편안한 약물이 아니라, 기분이 좋아지는 환각적 효과로 인해 반복 사용 욕구를 유발할 수 있다는 점이 매우 위험합니다.</p>
+        </article>
+
+        <article class="drug-card">
+          <div class="label">7. 대마</div>
+          <h2>대마</h2>
+          <p>대마는 평온함, 행복감, 스트레스 해소, 졸음, 감각 증폭, 식욕 증가, 성욕 증가 등을 유발할 수 있습니다. 동시에 심장 박동수 상승, 구강 건조, 갈증, 안구충혈, 혈압 저하 같은 신체적 변화도 나타날 수 있습니다.</p>
+          <p>하지만 인지능력 저하, 집중력 문제, 기억력 문제, 감각 왜곡, 공포심, 환각 등이 나타날 수 있으며, 단기 기억과 작동 기억에 문제가 생긴다는 보고도 있습니다. 즉, 일부에서 가볍게 생각할 수 있으나 실제로는 정신 기능 저하와 감각 이상을 일으킬 수 있습니다.</p>
+        </article>
+
+        <article class="drug-card">
+          <div class="label">8. 코카류</div>
+          <h2>코카류</h2>
+          <p>코카인은 도파민 활성을 크게 증가시켜 강한 쾌감, 집중력 상승, 창의성 증가, 의욕 상승처럼 느껴지게 할 수 있습니다. 그러나 지속 사용 시 비강과 기관지 손상, 조직 괴사 위험이 있으며, 정신적 부작용이 매우 심각할 수 있습니다.</p>
+          <p>대표적으로 수면장애, 인성 변화, 폭력성 증가, 반사회적 행동 증가가 나타날 수 있고, 피부 안에 벌레가 기어다니는 것 같은 환촉, 환각, 편집성 망상까지 발생할 수 있습니다. 금단 시에는 불안감, 우울감, 피로감, 두통, 식욕 증가 등이 나타날 수 있습니다.</p>
+        </article>
+
+        <article class="drug-card">
+          <div class="label">9. 아편류</div>
+          <h2>아편류</h2>
+          <p>아편류는 강한 진통과 쾌감을 유발하지만, 반복 사용 시 매우 강한 의존으로 이어질 수 있습니다. 통증이 완전히 사라진 경험 이후에는 일상적인 상태를 더 큰 고통으로 느끼게 되어 약물에 더 쉽게 의존하게 될 수 있습니다.</p>
+          <p>중독이 진행되면 뇌의 천연 진통 시스템과 수용체 기능이 손상되어 약물을 쓰지 않으면 일상생활이 어려운 수준에 이를 수 있습니다. 금단 증상도 매우 심각하며, 내성이 생겨 점점 더 많은 양을 써야 하고, 과량 복용 시 호흡중추 마비로 사망할 수 있습니다. 의료용으로 쓰더라도 구역질, 구토, 변비가 흔하게 나타날 수 있습니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const hero = document.getElementById('hero');
+    const fill = document.getElementById('fill');
+
+    function updateFill() {
+      const rect = hero.getBoundingClientRect();
+      const h = hero.offsetHeight || 1;
+      const progress = Math.min(Math.max(-rect.top / h, 0), 1);
+      fill.style.transform = `translateY(${-progress * 100}%)`;
+    }
+
+    window.addEventListener('scroll', updateFill, { passive: true });
+    window.addEventListener('resize', updateFill);
+    updateFill();
+  </script>
+</body>
+</html>
